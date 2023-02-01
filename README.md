@@ -10,8 +10,11 @@ Communication protocol:
 ![image](https://user-images.githubusercontent.com/66179360/216107909-e4f57ef1-c752-4999-92ef-5dfc9c5424e6.png)
 
 *the values 0x05 and 0x04 indicate respectively the HEADER and TAIL of a frame.
+<br>
 *the size of the PAYLOAD elements of the frame is coded on the 2 bytes following the header (LENGTHH and LENGTHL).
+<br>
 *the CTRL control field is set as the 2's complement of the sum of the bytes contained in PAYLOAD and PAYLOAD and LENGTH modulo 256.
+<br>
 *the values 0x04 and 0x05 being reserved as markers, they must not appear in the rest of the frame: consequently, if the PAYLOAD, LENGTH or CTRL field contains this value, it is preceded by an escape (ESC = 0x06) and transmitted as value + ESC. For the same same reason, if the payload shows the value 0x06, 0x06 will be transmitted followed by 0x0C. The processing of escapes is carried out after the calculation of the length and the control.
 
 
